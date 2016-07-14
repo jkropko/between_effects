@@ -1,12 +1,296 @@
 \documentclass{article}[12pt]
 \usepackage{amsmath, graphicx}
 \usepackage[margin=2cm]{geometry}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
 \begin{document}
 \title{On the Simultaneous Use of Fixed Effects on Cases and Time Points}
 \date{\today}
 \author{Jonathan Kropko\\ University of Virginia \\ jkropko@virginia.edu \and Robert Kubinec \\University of Virginia\\rmk7xy@virginia.edu}
 \maketitle
 \begin{abstract}
-Time-series cross-sectional (TSCS) data contain a sample of cases observed at several repeated time points.  Researchers commonly employ fixed effects (FEs) on the cases to remove cross-sectional unobserved heterogeneity from the model.  Recently, a great deal of applied work also includes FEs on time points with the intention of also accounting for omitted variables in the time dimension.  The properties of the model that includes FEs on both cases and time are not well understood.  We derive the formal two-way FE estimator and show that it does not account for unobserved heterogeneity in the cross-sectional or the time dimension.  We further demonstrate that the two-way FE model is sensitive to whether the panels are balanced while a model that includes FEs only on cases or only on time points is not.  We demonstrate that the choice of model has a profound influence on the findings of an analysis that assesses the relationship between a country's wealth and level of democracy.  We recommend that researchers avoid the two-way FE model, and instead use a model with FEs only on cases for research questions that involve the comparison of time trends, or a model with FEs only on time points for research questions that require the comparison of different cases. 
+\noindent Time-series cross-sectional (TSCS) data contain a sample of cases observed at repeated time points.  Researchers commonly employ fixed effects (FEs) on the cases to remove cross-sectional unobserved heterogeneity from the model.  Recently, a great deal of applied work includes FEs on cases and on time points in the same model with the intention of accounting for omitted variables in both the cross-sectional and time dimensions.  The properties of the model that includes FEs on both cases and time are not well understood.  We derive the formal two-way FE estimator and show that it does not account for unobserved heterogeneity in either the cross-sectional or the time dimension.  We further demonstrate that the two-way FE model is sensitive to whether the panels are balanced while a model that includes FEs only on cases or only on time points is not.  Using an analysis of the relationship between a country's wealth and level of democracy, we show that the choice of model has a profound influence on the findings.  We recommend that researchers avoid the two-way FE model, and instead use a model with FEs only on cases or only on time points, a choice that depends on the research question. 
 \end{abstract}
+
+\newpage
+
+\section{Proofs}
+
+\textbf{Lemma 1a.}  The following equivalence holds in both balanced and unbalanced panels:
+\begin{equation}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_i) = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)(y_{it}  - \bar{y})=\sum_{i=1}^N \sum_{t=1}^{T_i} (x_{it}  - \bar{x})(y_{it}  - \bar{y}_i).
+\end{equation}
+\begin{proof}
+We prove the lemma for unbalanced panels, but the lemma also holds for balanced panels since balanced panels are the special case in which $T_i = T_j, \forall i, j \in \{1, \hdots, N\}$. We demonstrate that all three expressions are individually equal to $\sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N T_i\bar{x}_i \bar{y}_i$ and are therefore equal to each other:
+\begin{align}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_i)  & = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}y_{it} - x_{it}\bar{y}_i  - \bar{x}_iy_{it}  +\bar{x}_i \bar{y}_i) \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}\bar{y}_i  - \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}_iy_{it}  + \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}_i \bar{y}_i \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N \bar{y}_i\sum_{t=1}^{T_i}x_{it}  - \sum_{i=1}^N \bar{x}_i\sum_{t=1}^{T_i}y_{it}  + \sum_{i=1}^N T_i\bar{x}_i \bar{y}_i \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N \bar{y}_i(T_i \bar{x}_i)  - \sum_{i=1}^N \bar{x}_i(T_i\bar{y}_i)  + \sum_{i=1}^N T_i\bar{x}_i \bar{y}_i \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N T_i\bar{x}_i \bar{y}_i.
+\end{align}
+
+\begin{align}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)(y_{it}  - \bar{y})  & = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}y_{it} - x_{it}\bar{y}  - \bar{x}_iy_{it}  +\bar{x}_i \bar{y}) \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}\bar{y}  - \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}_iy_{it}  + \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}_i \bar{y} \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \bar{y}\sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}  - \sum_{i=1}^N \bar{x}_i\sum_{t=1}^{T_i}y_{it}  + \bar{y}\sum_{i=1}^N T_i\bar{x}_i  \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \bar{y}\sum_{i=1}^N T_i \bar{x}_i  - \sum_{i=1}^N \bar{x}_i(T_i\bar{y}_i)  + \bar{y}\sum_{i=1}^N T_i\bar{x}_i  \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N T_i\bar{x}_i \bar{y}_i.
+\end{align}
+
+\begin{align}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x})(y_{it}  - \bar{y}_i)  & = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}y_{it} - x_{it}\bar{y}_i  - \bar{x}y_{it}  +\bar{x} \bar{y}_i) \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}\bar{y}_i  - \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}y_{it}  + \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x} \bar{y}_i \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N \bar{y}_i\sum_{t=1}^{T_i}x_{it}  - \bar{x}\sum_{i=1}^N \sum_{t=1}^{T_i}y_{it}  + \bar{x}\sum_{i=1}^N T_i \bar{y}_i \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N \bar{y}_i(T_i \bar{x}_i)  - \bar{x}\sum_{i=1}^N T_i\bar{y}_i + \bar{x}\sum_{i=1}^N T_i \bar{y}_i \nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}y_{it} - \sum_{i=1}^N T_i\bar{x}_i \bar{y}_i.\qed
+\end{align}
+\end{proof}
+\textbf{Lemma 1b.}  The following equivalence holds in both balanced and unbalanced panels:
+\begin{equation}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_t) = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_t)(y_{it}  - \bar{y})=\sum_{i=1}^N \sum_{t=1}^{T_i} (x_{it}  - \bar{x})(y_{it}  - \bar{y}_t).
+\end{equation}
+\begin{proof}
+The proof follows the proof of lemma 1a, substituting $\bar{x}_t$ for $\bar{x}_i$ and $\bar{y}_t$ for $\bar{y}_i$ and rewriting the summation as $\sum_{t=1}^{T}\sum_{i=1}^{N_t}$. \qed
+\end{proof}
+\textbf{Lemma 2a}. The following equivalence holds in both balanced and unbalanced panels:
+\begin{equation}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)^2  = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}).
+\end{equation}
+\begin{proof}
+We prove the lemma for unbalanced panels, but the lemma also holds for balanced panels since balanced panels are the special case in which $T_i = T_j, \forall i, j \in \{1, \hdots, N\}$. We demonstrate that both expressions are individually equal to $\sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}^2  -  \sum_{i=1}^N T_i\bar{x}_i^2$ and are therefore equal to each other:
+\begin{align}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)^2 & = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}^2  - 2x_{it}\bar{x}_i + \bar{x}_i^2)\nonumber\\ 
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}^2  - 2\sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}\bar{x}_i + \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}_i^2\nonumber\\ 
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}^2  - 2\sum_{i=1}^N \bar{x}_i \sum_{t=1}^{T_i}x_{it}+ \sum_{i=1}^N T_i\bar{x}_i^2\nonumber\\ 
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}^2  - 2\sum_{i=1}^N T_i\bar{x}_{i}^2+ \sum_{i=1}^N T_i\bar{x}_i^2\nonumber\\ 
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}^2  -  \sum_{i=1}^N T_i\bar{x}_i^2.
+\end{align}
+
+\begin{align}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}) & = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}^2  -\bar{x}x_{it} - \bar{x}_ix_{it} + \bar{x}_i\bar{x})\nonumber\\ 
+& = \sum_{i=1}^N \sum_{t=1}^{T_i} x_{it}^2  - \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}x_{it} -  \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}_ix_{it} +  \sum_{i=1}^N \sum_{t=1}^{T_i}\bar{x}_i\bar{x}\nonumber\\ 
+& = \sum_{i=1}^N \sum_{t=1}^{T_i} x_{it}^2  - \bar{x}\sum_{i=1}^N \sum_{t=1}^{T_i}x_{it} -  \sum_{i=1}^N \bar{x}_i\sum_{t=1}^{T_i}x_{it} +  \bar{x}\sum_{i=1}^N T_i\bar{x}_i\nonumber\\ 
+& = \sum_{i=1}^N \sum_{t=1}^{T_i} x_{it}^2  - \bar{x}\sum_{i=1}^N T_i\bar{x}_{i} -  \sum_{i=1}^N T_i\bar{x}_{i}^2 +  \bar{x}\sum_{i=1}^N T_i\bar{x}_i\nonumber\\ 
+& = \sum_{i=1}^N \sum_{t=1}^{T_i}x_{it}^2  -  \sum_{i=1}^N T_i\bar{x}_i^2.\qed
+\end{align}
+\end{proof}
+\textbf{Lemma 2b}. The following equivalence holds in both balanced and unbalanced panels:
+\begin{equation}
+\sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_t)^2  = \sum_{i=1}^N \sum_{t=1}^{T_i}(x_{it}  - \bar{x}_t)(x_{it}  - \bar{x}).
+\end{equation}
+\begin{proof}
+The proof follows the proof of lemma 2a, substituting $\bar{x}_t$ for $\bar{x}_i$ and rewriting the summation as $\sum_{t=1}^{T}\sum_{i=1}^{N_t}$. \qed
+\end{proof}
+\textbf{Theorem 1.} The two-way fixed effects estimator is a weighted average of five coefficient estimates: (1) the pooled OLS estimator ($\beta_{\text{pool}}$), (2) the case-level fixed effects estimator  ($\beta_{\text{caseFE}}$), (3) the time-level fixed effects estimator  ($\beta_{\text{timeFE}}$), (4) the OLS estimator applied to the model that removes the case-level means from the outcome and the time-level means from the predictor  ($\beta_{\text{casetime}}$), and (5) the OLS estimator applied to the model that removes the time-level means from the outcome and the case-level means from the predictor  ($\beta_{\text{timecase}}$).  Specifically, the two-way fixed effects estimator is
+\begin{equation}
+\beta_{TW}  =  \frac{\omega_1\beta_{\text{pool}} - \omega_2\beta_{\text{caseFE}} - \omega_3\beta_{\text{timeFE}} + \omega_4\beta_{\text{casetime}} + \omega_5\beta_{\text{timecase}} }{\omega_1-\omega_2-\omega_3+\omega_4+\omega_5},
+\end{equation}
+where
+\begin{align*}
+\omega_1 & = \sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}  - \bar{x})^2,&
+\omega_2 & = -\sum_{i=1}^N\sum_{t=1}^{T_i} (x_{it}  - \bar{x}_i)^2,&
+\omega_3 &= - \sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}  - \bar{x}_t)^2,&
+\omega_4 = \omega_5 & =\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}_t).
+\end{align*}
+\begin{proof}
+The two-way fixed effects estimator is the OLS estimator applied to the following model,
+\begin{equation}\label{model}
+y_{it}^* = \alpha_{TW} + \beta_{TW} x_{it}^* + \varepsilon_{it}, 
+\end{equation}
+where $*$ denotes the transformation
+\begin{equation}
+x_{it}^* = x_{it} - \bar{x}_i - \bar{x}_t + \bar{x}.
+\end{equation}
+By OLS, the coefficient in equation \ref{model} is given by
+\begin{align}
+\beta_{TW} & =  \frac{\sum_{i=1}^N\sum_{t=1}^{T_i}\Big(x_{it} - \bar{x}_i - \bar{x}_t + \bar{x}\Big)\Big(y_{it} - \bar{y}_i - \bar{y}_t + \bar{y}\Big)}{\sum_{i=1}^N\sum_{t=1}^{T_i}\Big(x_{it} - \bar{x}_i - \bar{x}_t + \bar{x}\Big)^2}\nonumber\\
+& =\frac{\sum_{i=1}^N\sum_{t=1}^{T_i} \Big(x_{it}  + x_{it} - x_{it} - \bar{x}_i - \bar{x}_t + \bar{x}\Big)\Big(y_{it} + y_{it} - y_{it} - \bar{y}_i - \bar{y}_t + \bar{y}\Big)}{\sum_{i=1}^N\sum_{t=1}^{T_i}\Big(x_{it} + x_{it} - x_{it} - \bar{x}_i - \bar{x}_t + \bar{x}\Big)^2}\nonumber\\
+& =\frac{\sum_{i=1}^N\sum_{t=1}^{T_i} \Big[(x_{it}  - \bar{x}_i) + (x_{it}  - \bar{x}_t ) - (x_{it}- \bar{x})\Big]\Big[(y_{it}  - \bar{y}_i) + (y_{it}  - \bar{y}_t ) - (y_{it}- \bar{y})\Big]}{\sum_{i=1}^N\sum_{t=1}^{T_i}\Big[(x_{it}  - \bar{x}_i) + (x_{it}  - \bar{x}_t ) - (x_{it}- \bar{x})\Big]^2},\nonumber\\
+& = \frac{\sum_{i=1}^N\sum_{t=1}^{T_i} A_{it}}{\sum_{i=1}^N\sum_{t=1}^{T_i} B_{it}},\label{ols2}
+\end{align}
+where
+\begin{align}
+A_{it} & =  (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_i) + (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_t) - (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}) \nonumber\\
+&+ (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_i)+ (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_t) - (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}) \nonumber\\
+&-  (x_{it}  - \bar{x})(y_{it}  - \bar{y}_i) - (x_{it}  - \bar{x})(y_{it}  - \bar{y}_t) + (x_{it}  - \bar{x})(y_{it}  - \bar{y}),
+\end{align}
+and
+\begin{align}
+B_{it} & =  (x_{it}  - \bar{x}_i)^2 + (x_{it}  - \bar{x}_t)^2 + (x_{it}  - \bar{x})^2 \nonumber\\
+&+ 2(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}_t) - 2(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}) - 2(x_{it}  - \bar{x}_t)(x_{it}  - \bar{x}).
+\end{align}
+From lemmas 1a, 1b, 2a, and 2b, these expressions reduce to
+\begin{align}
+A_{it} & = (x_{it}  - \bar{x})(y_{it}  - \bar{y}) - (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_i) - (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_t) \nonumber\\
+& + (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_t) + (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_i),
+\end{align}
+and
+\begin{equation}
+B_{it} =  (x_{it}  - \bar{x})^2 - (x_{it}  - \bar{x}_i)^2 - (x_{it}  - \bar{x}_t)^2 + 2(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}_t).
+\end{equation}
+Note that the pooled OLS estimator for the coefficient is
+\begin{equation}
+\beta_{\text{pool}} = \frac{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x})(y_{it}-\bar{y})}{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x})^2},
+\end{equation}
+the case fixed effects estimator for the coefficient is
+\begin{equation}
+\beta_{\text{caseFE}} = \frac{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x}_i)(y_{it}-\bar{y}_i)}{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x}_i)^2},
+\end{equation}
+and the time fixed effects estimator for the coefficient is
+\begin{equation}
+\beta_{\text{timeFE}} = \frac{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x}_t)(y_{it}-\bar{y}_t)}{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x}_t)^2}.
+\end{equation}
+In addition, define $\beta_{\text{casetime}}$ to be the OLS coefficient obtained by removing the case-level means from the outcome and the time-level means from the predictor, given by
+\begin{equation}
+\beta_{\text{casetime}} = \frac{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x}_t)(y_{it}-\bar{y}_i)}{\sum_{i=1}^N\sum_{t=1}^{T_i} (x_{it}-\bar{x}_i)(x_{it}-\bar{x}_t)}.
+\end{equation}
+Likewise, define $\beta_{\text{timecase}}$ to be the OLS coefficient obtained by removing the time-level means from the outcome and the case-level means from the predictor, given by
+\begin{equation}
+\beta_{\text{timecase}} = \frac{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x}_i)(y_{it}-\bar{y}_t)}{\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}-\bar{x}_i)(x_{it}-\bar{x}_t)}.
+\end{equation}
+The two-way fixed effects estimator is therefore a weighted average of the preceding five estimates, given by
+\begin{equation}
+\beta_{TW}  =  \frac{\omega_1\beta_{\text{pool}} - \omega_2\beta_{\text{caseFE}} - \omega_3\beta_{\text{timeFE}} + \omega_4\beta_{\text{casetime}} + \omega_5\beta_{\text{timecase}} }{\omega_1-\omega_2-\omega_3+\omega_4+\omega_5},
+\end{equation}
+where
+\begin{align*}
+\omega_1 & = \sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}  - \bar{x})^2,&
+\omega_2 & = -\sum_{i=1}^N\sum_{t=1}^{T_i} (x_{it}  - \bar{x}_i)^2,&
+\omega_3 &= - \sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}  - \bar{x}_t)^2,&
+\omega_4 = \omega_5 & =\sum_{i=1}^N\sum_{t=1}^{T_i}(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}_t).
+\end{align*}
+\end{proof}
+\textbf{Lemma 3}. If the panels in the data are balanced, then
+\begin{equation}
+\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_t)  = \sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_t)(y_{it} - \bar{y}_i).
+\end{equation}
+\begin{proof}
+This proof depends on the fact that 
+\begin{equation}
+\begin{array}{cccc}
+\displaystyle\bar{x} & \displaystyle= \frac{\sum_{i=1}^N \sum_{t=1}^T x_{it}}{NT} &\displaystyle = \frac{\sum_{i=1}^N \bar{x}_{i}}{N} &\displaystyle = \frac{\sum_{t=1}^T \bar{x}_{t}}{T}
+\end{array}
+\end{equation}
+if and only if the panels are balanced:
+\begin{align}
+\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_t)  & = \sum_{i=1}^N \sum_{t=1}^T(x_{it}y_{it} - x_{it}\bar{y}_t  - \bar{x}_iy_{it} + \bar{x}_i\bar{y}_t)\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^Tx_{it}y_{it} - \sum_{i=1}^N \sum_{t=1}^Tx_{it}\bar{y}_t  - \sum_{i=1}^N \sum_{t=1}^T\bar{x}_iy_{it} + \sum_{i=1}^N \sum_{t=1}^T\bar{x}_i\bar{y}_t\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^Tx_{it}y_{it} -  \sum_{t=1}^T\bar{y}_t\sum_{i=1}^Nx_{it}  - \sum_{i=1}^N \bar{x}_i\sum_{t=1}^Ty_{it} + \sum_{i=1}^N \bar{x}_i\sum_{t=1}^T\bar{y}_t\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^Tx_{it}y_{it} -  N\sum_{t=1}^T\bar{x}_{t}\bar{y}_t  - T\sum_{i=1}^N \bar{x}_i\bar{y}_{i} + \sum_{i=1}^N \bar{x}_i\sum_{t=1}^T\bar{y}_t\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^Tx_{it}y_{it} -  N\sum_{t=1}^T\bar{x}_{t}\bar{y}_t  - T\sum_{i=1}^N \bar{x}_i\bar{y}_{i} + NT \bar{x}\bar{y}\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^Tx_{it}y_{it} -  \sum_{t=1}^T\bar{x}_{t}\sum_{i=1}^N{y}_{it}  - \sum_{i=1}^N\sum_{t=1}^T x_{it}\bar{y}_{i} + \sum_{i=1}^N \bar{x}_t\sum_{t=1}^T\bar{y}_i\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T(x_{it}y_{it} -  \bar{x}_{t}y_{it}  - x_{it}\bar{y}_{i} +  \bar{x}_t\bar{y}_i)\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T(x_{it}-\bar{x}_t)(y_{it} -  \bar{y}_{i}).\qed
+\end{align}
+\end{proof}
+\textbf{Lemma 4}. If the panels in the data are balanced, then
+\begin{equation}
+\sum_{i=1}^N \sum_{t=1}^T\Big[(x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_i) + (x_{it}  - \bar{x}_t)(y_{it} - \bar{y}_t) - (x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_t)\Big]  = \sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x})(y_{it} - \bar{y}).
+\end{equation}
+\begin{proof}
+\begin{align}
+& \sum_{i=1}^N \sum_{t=1}^T\Big[(x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_i) + (x_{it}  - \bar{x}_t)(y_{it} - \bar{y}_t) - (x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_t)\Big]\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T\Big[(x_{it}y_{it} - x_{it}\bar{y}_i  - \bar{x}_iy_{it} + \bar{x}_i\bar{y}_i)+(x_{it}y_{it} - x_{it}\bar{y}_t  - \bar{x}_ty_{it} + \bar{x}_t\bar{y}_t) - (x_{it}y_{it} - x_{it}\bar{y}_t  - \bar{x}_iy_{it} + \bar{x}_i\bar{y}_t)\Big]\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T\Big[(x_{it}y_{it}  +x_{it}y_{it} - x_{it}y_{it}) -  x_{it}(\bar{y}_i  + \bar{y}_t  - \bar{y}_t )  -(\bar{x}_i + \bar{x}_t - \bar{x}_i)y_{it}+ \bar{x}_i\bar{y}_i + \bar{x}_t\bar{y}_t - \bar{x}_i\bar{y}_t\Big]\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T \Big[x_{it}y_{it} -  x_{it}\bar{y}_i  -\bar{x}_ty_{it}+ \bar{x}_i\bar{y}_i + \bar{x}_t\bar{y}_t - \bar{x}_i\bar{y}_t\Big]\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}y_{it} -  \sum_{i=1}^N \sum_{t=1}^Tx_{it}\bar{y}_i  -\sum_{i=1}^N \sum_{t=1}^T\bar{x}_ty_{it}+ \sum_{i=1}^N \sum_{t=1}^T\bar{x}_i\bar{y}_i + \sum_{i=1}^N \sum_{t=1}^T\bar{x}_t\bar{y}_t - \sum_{i=1}^N \sum_{t=1}^T\bar{x}_i\bar{y}_t\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}y_{it} -  T\sum_{i=1}^N \bar{x}_i\bar{y}_i  -N\sum_{t=1}^T\bar{x}_t\bar{y}_t+ T\sum_{i=1}^N \bar{x}_i\bar{y}_i + N\sum_{t=1}^T\bar{x}_t\bar{y}_t - NT\bar{x}\bar{y}\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}y_{it} - NT\bar{x}\bar{y}\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}y_{it} - NT\bar{x}\bar{y} - NT\bar{x}\bar{y} + NT\bar{x}\bar{y}\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}y_{it} - \sum_{i=1}^N \sum_{t=1}^Tx_{it}\bar{y}  - \sum_{i=1}^N \sum_{t=1}^T\bar{x}y_{it} + \sum_{i=1}^N \sum_{t=1}^T\bar{x}\bar{y}\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T(x_{it}y_{it} - x_{it}\bar{y}  - \bar{x}y_{it} + \bar{x}\bar{y})\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x})(y_{it} - \bar{y}). \qed
+\end{align}
+\end{proof}
+\textbf{Lemma 5}. If the panels in the data are balanced, then
+\begin{equation}
+\sum_{i=1}^N \sum_{t=1}^T\Big[(x_{it}  - \bar{x}_i)^2 + (x_{it} - \bar{x}_t)^2 - (x_{it}  - \bar{x}_i)(x_{it} - \bar{x}_t)\Big]  = \sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x})^2.
+\end{equation}
+\begin{proof}
+\begin{align}
+& \sum_{i=1}^N \sum_{t=1}^T\Big[(x_{it}  - \bar{x}_i)^2 + (x_{it} - \bar{x}_t)^2 - (x_{it}  - \bar{x}_i)(x_{it} - \bar{x}_t)\Big]\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T \Big[(x_{it}^2 - 2x_{it}\bar{x}_i + \bar{x}_i^2)+(x_{it}^2 - 2x_{it}\bar{x}_t  + \bar{x}_t^2) - (x_{it}^2 - x_{it}\bar{x}_t  - x_{it}\bar{x}_i + \bar{x}_i\bar{x}_t)\Big]\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T \Big[(x_{it}^2  +x_{it}^2 - x_{it}^2) -  x_{it}(2\bar{x}_i  + 2\bar{x}_t  - \bar{x}_i - \bar{x}_t ) + \bar{x}_i^2 + \bar{x}_t^2 - \bar{x}_i\bar{x}_t\Big]\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T \Big[x_{it}^2 -  x_{it}\bar{x}_i  + x_{it}\bar{x}_t + \bar{x}_i^2 + \bar{x}_t^2 - \bar{x}_i\bar{x}_t\Big]\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}^2 -  \sum_{i=1}^N \sum_{t=1}^Tx_{it}\bar{x}_i  + \sum_{i=1}^N \sum_{t=1}^Tx_{it}\bar{x}_t + \sum_{i=1}^N \sum_{t=1}^T\bar{x}_i^2 + \sum_{i=1}^N \sum_{t=1}^T\bar{x}_t^2 - \sum_{i=1}^N \sum_{t=1}^T\bar{x}_i\bar{x}_t\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}^2 -  T\sum_{i=1}^N\bar{x}_i^2  + N \sum_{t=1}^T\bar{x}_t^2 + T\sum_{i=1}^N \bar{x}_i^2 + N \sum_{t=1}^T\bar{x}_t^2 - NT\bar{x}^2\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}^2 - NT\bar{x}^2\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}^2 - NT\bar{x}^2 + NT\bar{x}^2 - NT\bar{x}^2\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T x_{it}^2 - 2\sum_{i=1}^N \sum_{t=1}^T x_{it}\bar{x} +\sum_{i=1}^N \sum_{t=1}^T\bar{x}^2\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T (x_{it}^2 - 2x_{it}\bar{x} +\bar{x}^2)\nonumber\\
+& = \sum_{i=1}^N \sum_{t=1}^T (x_{it}-\bar{x})^2. \qed
+\end{align}
+\end{proof}
+\textbf{Theorem 2}. If the panels in the data are balanced, then the two-way fixed effect estimator is given by
+\begin{equation}
+\beta_{TW} = \frac{\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_t)}{\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_i)(x_{it} - \bar{x}_t)},
+\end{equation}
+or equivalently as
+\begin{equation}
+\beta_{TW} = \frac{\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_t)(y_{it} - \bar{y}_i)}{\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_i)(x_{it} - \bar{x}_t)}.
+\end{equation}
+\begin{proof}
+From the proof of theorem 1, the two-way fixed effects estimator can be written as
+\begin{equation}
+\beta_{TW}=\frac{\sum_{i=1}^N\sum_{t=1}^{T_i} A_{it}}{\sum_{i=1}^N\sum_{t=1}^{T_i} B_{it}},
+\end{equation}
+where
+\begin{align}
+A_{it} & = (x_{it}  - \bar{x})(y_{it}  - \bar{y}) - (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_i) - (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_t) \nonumber\\
+& + (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_t) + (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_i),
+\end{align}
+and
+\begin{equation}
+B_{it} =  (x_{it}  - \bar{x})^2 - (x_{it}  - \bar{x}_i)^2 - (x_{it}  - \bar{x}_t)^2 + 2(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}_t).
+\end{equation}
+By lemma 3, $A_{it}$ simplifies to
+\begin{equation}
+A_{it} = (x_{it}  - \bar{x})(y_{it}  - \bar{y}) - (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_i) - (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_t) + 2(x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_t),
+\end{equation}
+or equivalently to
+\begin{equation}
+A_{it} = (x_{it}  - \bar{x})(y_{it}  - \bar{y}) - (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_i) - (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_t) + 2(x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_i).
+\end{equation}
+Next, by lemma 4, these expressions further simplify to
+\begin{align}
+A_{it} & = \Big[(x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_i) + (x_{it}  - \bar{x}_t)(y_{it} - \bar{y}_t) - (x_{it}- \bar{x}_i)(y_{it} - \bar{y}_t)\Big]  \nonumber\\
+&- (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_i) - (x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_t) + 2(x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_t)\nonumber\\
+&\nonumber\\
+& = (x_{it}  - \bar{x}_i)(y_{it}  - \bar{y}_t),
+\end{align}
+or equivalently to $(x_{it}  - \bar{x}_t)(y_{it}  - \bar{y}_i)$ by lemma 3. Applying lemma 5, $B_{it}$ reduces as follows:
+\begin{align}
+B_{it} &=  \Big[(x_{it}  - \bar{x}_i)^2 + (x_{it} - \bar{y}_t)^2 - (x_{it}  - \bar{x}_i)(x_{it} - \bar{x}_t)\Big]\nonumber\\
+& - (x_{it}  - \bar{x}_i)^2 - (x_{it}  - \bar{x}_t)^2 + 2(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}_t)\nonumber\\
+&\nonumber\\
+&=(x_{it}  - \bar{x}_i)(x_{it}  - \bar{x}_t).
+\end{align}
+Therefore, the two-way fixed effect estimator is given by
+\begin{equation}
+\beta_{TW} = \frac{\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_t)}{\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_i)(x_{it} - \bar{x}_t)},
+\end{equation}
+or equivalently as
+\begin{equation}
+\beta_{TW} = \frac{\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_t)(y_{it} - \bar{y}_i)}{\sum_{i=1}^N \sum_{t=1}^T(x_{it}  - \bar{x}_i)(x_{it} - \bar{x}_t)}.\qed
+\end{equation}
+\end{proof}
 \end{document}
