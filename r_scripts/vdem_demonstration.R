@@ -14,14 +14,18 @@ require(stringr)
 #full_dataset <- saveRDS(object = full_dataset,"data/vdem_full.rds")
 # vdem_pos <- data.table::fread('data/polyarchy.csv')
 
-full_dataset <- readRDS('data/vdem_full.rds')
+# Set data location 
+
+data_loc <- file.path('C:/Users/bobku/Box Sync/Between Effects/V-DEM')
+
+full_dataset <- readRDS(paste0(data_loc,'/vdem_full.rds'))
 
 full_dataset$year_factor <- as.factor(full_dataset$year)
 
 
 # Load posterior estimates of the V-DEM indices
 
-vdem_pos <- as.tbl(as.data.frame(readRDS('data/vdem_pos.rds')))
+vdem_pos <- paste0(data_loc,'/vdem_pos.rds') %>% readRDS %>% as.data.frame %>% as.tbl
 vdem_pos$V1 <- NULL
 
 # combined posterior estimates with posterior uncertainty
@@ -115,15 +119,15 @@ results <- mutate(results,upper=Coef + 1.96*SD,lower=Coef - 1.96*SD)
 ggplot(results,aes(x=Coef,y=reorder(variables,Coef))) + geom_point() + ggnetwork::theme_blank() + geom_text(aes(label=variables),hjust=-1,check_overlap=TRUE) +
   geom_vline(xintercept=0) + geom_errorbarh(aes(xmin=lower,xmax=upper))
 
-model5 <- readRDS("data/model5.rds") %>% t %>% as.data.frame %>% tbl_df
-countries <- select(model5,matches(":country"))
-int_matrix <- tbl_df(lapply(countries,function(x) x + model5[['e_migdppcln']]))
+model4 <- readRDS("data/model4_results.rds") %>% t %>% as.data.frame %>% tbl_df
+countries <- select(model4,matches(":year"))
+int_matrix <- tbl_df(lapply(countries,function(x) x + model4[['e_migdppcln']]))
 results <- data_frame(Coef=sapply(int_matrix,mean), SD = sapply(int_matrix,sd))
-results$variables <- str_extract(colnames(countries),'[A-Z].+')
+results$variables <- str_extract(colnames(countries),'[0-9]+')
 results <- mutate(results,upper=Coef + 1.96*SD,lower=Coef - 1.96*SD)
 
-ggplot(results,aes(x=Coef,y=reorder(variables,Coef))) + geom_point() + ggnetwork::theme_blank() + geom_text(aes(label=variables),hjust=-1,check_overlap=TRUE) +
-  geom_vline(xintercept=0) + geom_errorbarh(aes(xmin=lower,xmax=upper))
+ggplot(results,aes(y=Coef,x=variables)) + geom_point()  + geom_text(aes(label=variables),vjust=5,check_overlap=TRUE) +
+  geom_hline(yintercept=0) + geom_errorbar(aes(ymin=lower,ymax=upper))
 
 
  
