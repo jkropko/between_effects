@@ -1,7 +1,13 @@
 \documentclass{article}[12pt]
+\fontfamily{times}
 \usepackage{amsmath, graphicx}
 \usepackage[margin=2cm]{geometry}
-
+\usepackage[american]{babel}
+\usepackage[style=apa]{biblatex}
+\usepackage{booktabs}
+\DeclareLanguageMapping{american}{american-apa}
+% This is Bob's Bibtex file, won't compile without it
+\addbibresource{BibTexDatabase.bib}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -22,7 +28,8 @@
       \vrule height0.75em width0.5em depth0.25em\fi}
 
 \begin{document}
-\title{On the Simultaneous Use of Fixed Effects on Cases and Time Points}
+%\title{On the Simultaneous Use of Fixed Effects on Cases and Time Points}
+\title{Two-Way Fixed Effects: Or How I Learned to Stop Worrying and Just Love Unobserved Heterogeneity}
 \date{\today}
 \author{Jonathan Kropko\\ University of Virginia \\ jkropko@virginia.edu \and Robert Kubinec \\University of Virginia\\rmk7xy@virginia.edu}
 \maketitle
@@ -31,6 +38,72 @@
 \end{abstract}
 
 \newpage
+
+\section{Meta-Analysis}
+
+To examine the prevalence of one and two-way fixed effects models in the political science literature, we collected methodological information on a sample of 363 articles from the \emph{American Political Science Review}, \emph{American Journal of Political Science}, and the \emph{Journal of Politics} for the period 1976 to 2014. The bulk of the articles were collected through JSTOR's Data for Research service, while the most recent years were collected through each journal separately. The search term used to create the dataset was ``fixed effect". Papers that were not one or two-way fixed effects time-series cross section models, such as hierarchical models, random-effects models, and cross-sectional models, were removed.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{all_articles}
+	\caption{Type of Fixed Effects Employed by Political Science Articles (1976-2014)}\label{allarticles}
+\end{figure}
+
+What Figure \ref{allarticles} indicates is that the vast majority of fixed effects models employed in the political science literature are either one-way within models or two-way fixed effects models. In particular, a noticeable trend over the last ten years has been towards greater usage of two-way FEs, although one-way FEs remain the dominant empirical estimation strategy for TSCS data.
+
+What is also evident is that the total number of FE models continue to increase year-on-year. This is likely due to the greater prevalence of TSCS datasets, which we regard as a great asset to the discipline. However, despite these models' greater usage, their interpretation does not appear to have grown more consistent or clear over time. Rather, there are several articles which tend to be frequently cited to justify one empirical strategy or another, with decisions often being made around the limitations of the available data.
+
+Qualitatively, it is apparent that certain papers have guided the bulk of time series cross section in the discipline. \textcite{stimson1985} first presented the ``least-squares with dummy variables" (LSDV) approach, which clarified the nature of fixed effects models although it did not provide specific recommendations as to what kind of one or two-way FX to use. \textcite{beckkatzturner1998} and \textcite{beckkatz1995} advanced the conversation considerably by providing more specific recommendations for how political scientists should run TSCS models depending on the structure of the data, i.e., different ratios of cases versus time points. More recently, alternative to traditional fixed effects models, such as estimation of ``rarely changing variables" \parencite{plumper2007} and difference-in-difference designs \parencite{abadie2005} have diversified fixed effects models to an extent, although the original papers by Beck and Katz and Stimson are still very influential, as can be seen in Figure \ref{stimsonkatz}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{stimsonkatz}
+	\caption{Citations of Beck and Katz (1995) and Stimson (1985) in political science journals in JSTOR}\label{stimsonkatz}
+\end{figure}
+
+Yet despite the wide uniformity in methods citations in fixed effects papers, there is also diversity in their interpretation and application. Generally speaking, the econometric notion that fixed effects estimators exist to correct for ``unobserved heterogeneity" [CITE--Wooldridge?] has meant that authors have come to prefer fixed effects for its ability to remove potential confounders. However, there is evident disagreement over what to do when a certain fixed effects model does not fit the data collected, particularly when most of the variables are constant within cases.
+
+Scholars generally use reasoning along the lines of \textcite{donno2013}, who did not use a one-way within FX model because ``fixed effects leads to too many observations dropping from the analysis" (p. 709). The problem, however, is not a lack of statistical power, but rather a mis-application of the within-FX estimator. In \citeauthor{donno2013}'s case, the problem appears to be that she is interested in a variable that does not often change within countries over time, that of the type of electoral system (p. 709). Donno could use a fixed effects model, but as her hypothesis relates more to differences between countries than within countries, a one-way between FX model would probably capture the variation in the dataset more appropriately.
+
+Two-way fixed effects suffer as well from the perception that they are more rigorous than one-way FX models but also require even more data. For example, \textcite{gabel2012} argue that they need both within and between FX because they want to control for ``unobserved national factors" (within FX) and ``temporal shocks" (between FX) (p. 1132). Similarly, \textcite{scheve2012} use two-way FX within their ``difference-in-difference" framework because one-way within FX ``control for time-constant unobserved country-level heterogeneity" while one-way between FX will account for ``common shocks" (p. 82-83).
+
+The use of two-way fixed effects, particularly in terms of the emergent difference-in-difference framework, introduces a new wrinkle in fixed effects estimation. The standard difference-in-difference framework is based on binary time points \parencite{shahidur2010}, but the TSCS application often incorporates many time points. However, authors still refer to the within one-way FX as accounting for ``time-invariant district characteristics" \parencite[484]{anzia2011}. However, these potential confounders are no longer time-invariant with more than two time points \parencite{imai2016}, as potential confounding variables may vary over time both between cases and within cases. 
+
+Given the emphasis on two-way FX and one-way within FX, it is somewhat surprising that one-way FX have been used consistently over the past two decades. However, the identification of fixed effects estimation with either one-way within or two-way FX has meant that one-way between FX models are not always recognized as such, and often their usage depends on traditions within certain streams of scholarship. For example, in the American political science literature on courts, it is common to include fixed effects for the tenure of a court, administration or Congress \parencite{jenkins2012,hall2014,boyd2010,lazarus2009}. This usage highlights the fact that between and within FX are merely two sides of the same coin: they splice up a dataset along two different dimensions, but these dimensions can be relabeled without changing the underlying substance.
+
+\section{Empirical Analysis}
+
+\begin{table}[!htbp] \centering 
+	\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+
+		Variable & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+		\midrule 
+		Log of GDP & 10,445 & 7.812 & 1.023 & 5.315 & 10.667 \\ 
+		Electoral Democracy Index & 16,224 & 0.321 & 0.282 & 0.008 & 0.958 \\ 
+		\# World Democracies & 10,154 & 30.104 & 7.895 & 13.043 & 48.765 \\ 
+		Capital as \% GDP & 5,472 & 0.520 & 0.500 & 0 & 1 \\ 
+		Fuel Income Per Capita & 10,211 & 333.186 & 2,251.948 & 0.000 & 81,161.850 \\ 
+		Fertility Rate & 10,924 & 4.433 & 2.013 & 0.895 & 9.223 \\ 
+		Civil War & 10,089 & 0.066 & 0.247 & 0 & 1 \\ 
+	\end{tabular} 
+	\caption{Descriptive Statistics} 
+	\label{describe} 
+\end{table} 
+
+\begin{table}[ht]
+\centering
+
+\begin{tabular}{cccccccccc}
+
+ Year & $x_{it}$ & $\bar{x}_i$ & $\bar{x}_b$ & $y_{it}$ & $\bar{y}_i$ &  $(x_{it}  - \bar{x}_t)$ & $(y_{it} - \bar{y}_t)$ & $(x_{it}  - \bar{x}_i)$ & $\frac{(x_{it}  - \bar{x}_i)(y_{it} - \bar{y}_t)}{(x_{it}  - \bar{x}_i)(x_{it} - \bar{x}_t)}$ \\
+\midrule
+ 2001 & 8.02 & 8.31 & 8.12 & 0.40 & 0.51 & -0.10 & -0.10 & -0.30 & -0.15 \\ 2002 & 8.08 & 8.31 & 8.14 & 0.41 & 0.51 & -0.06 & -0.09 & -0.24 & -0.15 \\ 2003 & 8.18 & 8.31 & 8.16 & 0.41 & 0.51 & 0.01 & -0.10 & -0.14 & -0.15 \\ 2004 & 8.30 & 8.31 & 8.20 & 0.37 & 0.51 & 0.09 & -0.14 & -0.01 & -0.15 \\ 2005 & 8.33 & 8.31 & 8.24 & 0.46 & 0.51 & 0.09 & -0.05 & 0.02 & -0.15 \\ 2006 & 8.41 & 8.31 & 8.28 & 0.57 & 0.51 & 0.13 & 0.06 & 0.10 & -0.15 \\ 2007 & 8.49 & 8.31 & 8.33 & 0.62 & 0.51 & 0.17 & 0.11 & 0.18 & -0.15 \\ 2008 & 8.52 & 8.31 & 8.35 & 0.63 & 0.51 & 0.17 & 0.12 & 0.21 & -0.15 \\ 2009 & 8.37 & 8.31 & 8.67 & 0.64 & 0.51 & -0.30 & 0.14 & 0.06 & -0.15 \\ 2010 & 8.42 & 8.31 & 8.71 & 0.56 & 0.51 & -0.29 & 0.05 & 0.11 & -0.15 \\
+
+\end{tabular}
+\caption{Two-Way Fixed Effect for Ukraine 2001-2010}\label{Ukraine_table}
+\end{table}
+	
+
 
 \section{Proofs}
 

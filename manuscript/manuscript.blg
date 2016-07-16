@@ -1,0 +1,24 @@
+[0] Config.pm:327> INFO - This is Biber 2.2
+[0] Config.pm:330> INFO - Logfile is 'manuscript.blg'
+[64] biber-MSWIN:283> INFO - === 
+[65] Biber.pm:334> INFO - Reading 'manuscript.bcf'
+[283] Utils.pm:147> WARN - Warning: Found biblatex control file version 2.9, expected version 2.8
+[283] Biber.pm:677> INFO - Found 15 citekeys in bib section 0
+[386] Biber.pm:3054> INFO - Processing section 0
+[465] Biber.pm:3193> INFO - Looking for bibtex format file 'BibTexDatabase.bib' for section 0
+[704] bibtex.pm:1072> INFO - Decoding LaTeX character macros into UTF-8
+[900] bibtex.pm:935> INFO - Found BibTeX data source 'BibTexDatabase.bib'
+[915] Utils.pm:147> WARN - Possible typo (case mismatch) between datasource keys: 'anderson1986' and 'Anderson1986' in file 'BibTexDatabase.bib'
+[932] Utils.pm:147> WARN - Possible typo (case mismatch) between datasource keys: 'bennett2014' and 'Bennett2014' in file 'BibTexDatabase.bib'
+[946] Utils.pm:147> WARN - Possible typo (case mismatch) between datasource keys: 'cavatorta2012' and 'Cavatorta2012' in file 'BibTexDatabase.bib'
+[972] Utils.pm:147> WARN - Possible typo (case mismatch) between datasource keys: 'heydemann2013' and 'Heydemann2013' in file 'BibTexDatabase.bib'
+[1020] Utils.pm:147> WARN - Possible typo (case mismatch) between datasource keys: 'Przeworski2009' and 'przeworski2009' in file 'BibTexDatabase.bib'
+[1036] Utils.pm:147> WARN - Possible typo (case mismatch) between datasource keys: 'Smith2007' and 'smith2007' in file 'BibTexDatabase.bib'
+[1382] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1382] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1382] Biber.pm:2931> INFO - Sorting list 'apa' of type 'entry' with scheme 'apa' and locale 'en-US'
+[1382] Biber.pm:2935> INFO - No sort tailoring available for locale 'en-US'
+[1447] bbl.pm:505> INFO - Writing 'manuscript.bbl' with encoding 'ascii'
+[1455] Utils.pm:147> WARN - The entry 'plumper2007' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[1456] bbl.pm:596> INFO - Output to manuscript.bbl
+[1461] Biber.pm:107> INFO - WARNINGS: 8

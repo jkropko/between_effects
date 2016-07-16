@@ -1,0 +1,350 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{apa}{apa}
+    \entry{abadie2005}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=da499bff747c5f6cd0ec9185c820ba4d}{Abadie}{A\bibinitperiod}{Alberto}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{da499bff747c5f6cd0ec9185c820ba4d}
+      \strng{fullhash}{da499bff747c5f6cd0ec9185c820ba4d}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelyear}{2005}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of Economic Studies}
+      \field{number}{1}
+      \field{title}{Semiparametric Difference-in-Differences Estimators}
+      \field{volume}{72}
+      \field{year}{2005}
+      \field{pages}{1\bibrangedash 19}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1111/0034-6527.00321
+      \endverb
+    \endentry
+    \entry{anzia2011}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=820d2cce493e3d06dd1b1e9357d7c1d8}{Anzia}{A\bibinitperiod}{Sarah\bibnamedelima F.}{S\bibinitperiod\bibinitdelim F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=6a9aa80e5dfc1e6ab243b59a88dac646}{Berry}{B\bibinitperiod}{Christopher\bibnamedelima R.}{C\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{48932665633ef4921ace82ec1152d3b7}
+      \strng{fullhash}{48932665633ef4921ace82ec1152d3b7}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Political Science}
+      \field{number}{3}
+      \field{title}{The Jackie (And Jill) Robinson Effect: Why Do Congresswomen Outperform Congressmen?}
+      \field{volume}{55}
+      \field{year}{2011}
+      \field{pages}{478\bibrangedash 493}
+      \range{pages}{16}
+    \endentry
+    \entry{beckkatz1995}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=d5148cebb18611ce1c74228c4b3f0567}{Beck}{B\bibinitperiod}{Nathaniel}{N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=96aef90a9dc20d4b9461306e4fee1160}{Katz}{K\bibinitperiod}{Jonathan\bibnamedelima N.}{J\bibinitperiod\bibinitdelim N\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{f390d808c864f5597882eaee8484a6b4}
+      \strng{fullhash}{f390d808c864f5597882eaee8484a6b4}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{1995}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Political Science Review}
+      \field{number}{3}
+      \field{title}{What To Do (and Not to Do) with Time-Series Cross-Section Data}
+      \field{volume}{89}
+      \field{year}{1995}
+      \field{pages}{634\bibrangedash 647}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.2307/2082979
+      \endverb
+    \endentry
+    \entry{beckkatzturner1998}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=d5148cebb18611ce1c74228c4b3f0567}{Beck}{B\bibinitperiod}{Nathaniel}{N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=96aef90a9dc20d4b9461306e4fee1160}{Katz}{K\bibinitperiod}{Jonathan\bibnamedelima N.}{J\bibinitperiod\bibinitdelim N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=08be40d6eb67b12e2e27a4996c395e3e}{Tucker}{T\bibinitperiod}{Richard}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{91ce32df8f71e090649d53d8aee14f04}
+      \strng{fullhash}{4723b526c2140acbdec26952f6666fd8}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{1998}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Political Science}
+      \field{number}{4}
+      \field{title}{Taking Time Seriously: Time-Series-Cross-Section Analysis with a Binary Dependent Variable}
+      \field{volume}{42}
+      \field{year}{1998}
+      \field{pages}{1260\bibrangedash 1288}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.2307/2991857
+      \endverb
+    \endentry
+    \entry{boyd2010}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=479c273ba9a3e954976d619882a49d2d}{Boyd}{B\bibinitperiod}{Christina\bibnamedelima L.}{C\bibinitperiod\bibinitdelim L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=87e5875e4980b86836b579ac43f958f0}{Epstein}{E\bibinitperiod}{Lee}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=6c8fc8a25699b2d0b81703662d566243}{Martin}{M\bibinitperiod}{Andrew\bibnamedelima D.}{A\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{8abbf91e1e391d1861085626ccc9f738}
+      \strng{fullhash}{e8d14b85fccc165a0f8d50dfcf494661}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{2010}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Political Science}
+      \field{number}{2}
+      \field{title}{Untangling the Causal Effects of Sex on Judging}
+      \field{volume}{54}
+      \field{year}{2010}
+      \field{pages}{389\bibrangedash 411}
+      \range{pages}{23}
+    \endentry
+    \entry{donno2013}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=cb01619506fc516ab2b8a565e5d2e7e5}{Donno}{D\bibinitperiod}{Daniela}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{cb01619506fc516ab2b8a565e5d2e7e5}
+      \strng{fullhash}{cb01619506fc516ab2b8a565e5d2e7e5}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelyear}{2013}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Political Science}
+      \field{number}{3}
+      \field{title}{Elections and Democratization in Authoritarian Regimes}
+      \field{volume}{57}
+      \field{year}{2013}
+      \field{pages}{703\bibrangedash 716}
+      \range{pages}{14}
+    \endentry
+    \entry{gabel2012}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=b6b85662d85f424f3c74626171e28add}{Gabel}{G\bibinitperiod}{Matthew\bibnamedelima J.}{M\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2a4a58f8be42e74c4f75525d6be4afb0}{Carruba}{C\bibinitperiod}{Clifford\bibnamedelima J.}{C\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=0ca1bc876d1b5c1bd0151bb228cb6bf9}{Ansley}{A\bibinitperiod}{Caitlin}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=83983ab75644cb6489c65156404d05ca}{Beaudette}{B\bibinitperiod}{Donald\bibnamedelima M.}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{1851663a7efb6281c66f46280f6d258c}
+      \strng{fullhash}{74d71ca0274151e4d2578880ea083adc}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelyear}{2012}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Politics}
+      \field{number}{4}
+      \field{title}{Of Courts and Commerce}
+      \field{volume}{74}
+      \field{year}{2012}
+      \field{pages}{1125\bibrangedash 1137}
+      \range{pages}{13}
+    \endentry
+    \entry{hall2014}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=bb3e00f744fbbe547df9265add648677}{Hall}{H\bibinitperiod}{Matthew\bibnamedelimb E.\bibnamedelimi K.}{M\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim K\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{bb3e00f744fbbe547df9265add648677}
+      \strng{fullhash}{bb3e00f744fbbe547df9265add648677}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelyear}{2014}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Political Science}
+      \field{number}{2}
+      \field{title}{The Semiconstrained Court: Public Opinion, the Separation of Powers, and the U.S. Supreme Court's Fear of Nonimplementation}
+      \field{volume}{58}
+      \field{year}{2014}
+      \field{pages}{352\bibrangedash 366}
+      \range{pages}{15}
+    \endentry
+    \entry{imai2016}{unpublished}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=3fb69a8c942c769b74775b484c82bbe9}{Imai}{I\bibinitperiod}{Kosuke}{K\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=74b0189a74aec0dde63e3612b3c9dc9c}{Kim}{K\bibinitperiod}{In\bibnamedelima Song}{I\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{6c3d7e946a92c6d05706a281fc7307a0}
+      \strng{fullhash}{6c3d7e946a92c6d05706a281fc7307a0}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelyear}{2016}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Online}
+      \field{title}{When Should We Use Linear Fixed Effects Regression Models for Causal Inference with Longitudinal Data?}
+      \field{year}{2016}
+    \endentry
+    \entry{jenkins2012}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=1e307be725e77c85eeef129ef70add5d}{Jenkins}{J\bibinitperiod}{Jeffrey\bibnamedelima A.}{J\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e872b94c65bf978be5b4b2e28200ef94}{Monroe}{M\bibinitperiod}{Nathan\bibnamedelima W.}{N\bibinitperiod\bibinitdelim W\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{5dcc87fd190f9576f6bffd25b98b2adc}
+      \strng{fullhash}{5dcc87fd190f9576f6bffd25b98b2adc}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labelyear}{2012}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Political Science}
+      \field{number}{4}
+      \field{title}{Buying Negative Agenda Control in the U.S. House}
+      \field{volume}{56}
+      \field{year}{2012}
+      \field{pages}{897\bibrangedash 912}
+      \range{pages}{16}
+    \endentry
+    \entry{shahidur2010}{book}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=7b3d246f2ca9776534d04eae79f75500}{Khandker}{K\bibinitperiod}{Shahidur\bibnamedelima R.}{S\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2f4721cf626b97bc60a5e552ee70b6ca}{Koolwal}{K\bibinitperiod}{Gayatri\bibnamedelima B.}{G\bibinitperiod\bibinitdelim B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=180397c02966a1899da73640ed72c889}{Samad}{S\bibinitperiod}{Hussain\bibnamedelima A.}{H\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Washington D.C.: World Bank}%
+      }
+      \strng{namehash}{e02c31ebd00bade90bd46b299729ce46}
+      \strng{fullhash}{1f21b31f39fb3779f1827d6971bfdd48}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelyear}{2010}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Handbook on Impact Evaluation: Quantitative Methods and Practices}
+      \field{year}{2010}
+      \keyw{Causal Methodology,Differences-in-Differences}
+    \endentry
+    \entry{lazarus2009}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=83fa7e5f96c00e43f5681a6ca8a335d1}{Lazarus}{L\bibinitperiod}{Jeffrey}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{83fa7e5f96c00e43f5681a6ca8a335d1}
+      \strng{fullhash}{83fa7e5f96c00e43f5681a6ca8a335d1}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelyear}{2009}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Politics}
+      \field{number}{3}
+      \field{title}{Party, Electoral Vulnerability, and Earmarks in the U.S. House of Representatives}
+      \field{volume}{71}
+      \field{year}{2009}
+      \field{pages}{1050\bibrangedash 1061}
+      \range{pages}{12}
+    \endentry
+    \entry{plumper2007}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=df9169dc1a402407872df5ca42a906b2}{Pl\"{u}mper}{P\bibinitperiod}{Thomas}{T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=93633bc1dbbba4800ccd823a8da836ab}{Troeger}{T\bibinitperiod}{Vera\bibnamedelima E.}{V\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{2ba9bcb874ac2e081555bd6f409e0d3d}
+      \strng{fullhash}{2ba9bcb874ac2e081555bd6f409e0d3d}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelyear}{2007}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Political Analysis}
+      \field{number}{2}
+      \field{title}{Efficient Estimation of Time-Invariant and Rarely Changing Variables in Finite Sample Panel Analyses with Unit Fixed Effects}
+      \field{volume}{15}
+      \field{year}{2007}
+      \field{pages}{124\bibrangedash 139}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1093/pan/mpm002
+      \endverb
+    \endentry
+    \entry{scheve2012}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=97ae29af39bd916ce60e635093d7dd88}{Scheve}{S\bibinitperiod}{Kenneth}{K\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e1e1ba1cc29b408b7c6a8ec15ab215df}{Stasavage}{S\bibinitperiod}{David}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{d14c0c879aee813d7c71ceecf46e7be7}
+      \strng{fullhash}{d14c0c879aee813d7c71ceecf46e7be7}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelyear}{2012}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Political Science Review}
+      \field{number}{1}
+      \field{title}{Democracy, War and Wealth: Lessons from Two Centuries of Inheritance Taxation}
+      \field{volume}{106}
+      \field{year}{2012}
+      \field{pages}{81\bibrangedash 102}
+      \range{pages}{22}
+    \endentry
+    \entry{stimson1985}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=a6339dffc513a86d9806e8694f9b2bd4}{Stimson}{S\bibinitperiod}{James\bibnamedelima A.}{J\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{a6339dffc513a86d9806e8694f9b2bd4}
+      \strng{fullhash}{a6339dffc513a86d9806e8694f9b2bd4}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelyear}{1985}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Political Science}
+      \field{number}{4}
+      \field{title}{Regression in Space and Time: A Statistical Essay}
+      \field{volume}{29}
+      \field{year}{1985}
+      \field{pages}{914\bibrangedash 947}
+      \range{pages}{34}
+      \verb{doi}
+      \verb 10.2307/2111187
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
